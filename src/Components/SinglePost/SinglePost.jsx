@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./SinglePost.css";
-// import PostImg from "../../image/cat.jpg";
 import { Delete, Edit } from "@material-ui/icons";
 import { useLocation } from "react-router";
 import axios from "axios";
@@ -19,7 +18,7 @@ function SinglePost() {
   const [desc, setDesc] = useState("");
   const [updatePost, setUpdatePost] = useState(false);
 
-  const PF = "http://localhost:4000/images/";
+  const PF = "https://gopi-mern-blog-api.herokuapp.com/images/";
 
   // console.log(location.pathname.split("/")[2]);
   const postId = location.pathname.split("/")[2];
@@ -29,7 +28,7 @@ function SinglePost() {
     //getpost
     const getSinglePost = async () => {
       const res = await axios.get(
-        `http://localhost:4000/api/posts/${postId}`
+        `https://gopi-mern-blog-api.herokuapp.com/api/posts/${postId}`
       );
       console.log(res.data);
       setPost(res.data.post);
@@ -41,8 +40,6 @@ function SinglePost() {
   }, [postId]);
 
   console.log(post.photo);
-  // console.log(user);
-  // console.log(post.username === user.username);
 
   //delete post
   const handleDelete = async () => {
@@ -50,7 +47,7 @@ function SinglePost() {
       console.log("delete in process");
       console.log("post Id", postId);
       const res = await axios.delete(
-        `http://localhost:4000/api/posts/${post._id}`,
+        `https://gopi-mern-blog-api.herokuapp.com/api/posts/${post._id}`,
         { data: { username: user.username } }
       );
       console.log(res.data);
@@ -65,7 +62,7 @@ function SinglePost() {
   const handleUpdate = async () => {
     try {
       await axios.put(
-        `http://localhost:4000/api/posts/${post._id}`,
+        `https://gopi-mern-blog-api.herokuapp.com/api/posts/${post._id}`,
         {
           username: user.username,
           title,
@@ -84,12 +81,9 @@ function SinglePost() {
         </div>
       ) : (
         <div className="singlePostWrapper">
-          {
-            post.photo && (
-              <img src={PF + post.photo} alt="" className="singlePostImg" />
-            )
-            // : (<img src={PostImg} alt="" className="singlePostImg" />)
-          }
+          {post.photo && (
+            <img src={PF + post.photo} alt="" className="singlePostImg" />
+          )}
 
           {updatePost ? (
             <input

@@ -3,7 +3,7 @@
 import { Link } from "react-router-dom";
 
 export default function Post({ post }) {
-  const PF = "https://gopi-blog-api.herokuapp.com/images/";
+  const PF = "https://gopi-mern-blog-api.herokuapp.com/images/";
 
   console.log(post);  //returns post details
   return (

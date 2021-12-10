@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+
 import "./Register.css";
 
 function Register() {
@@ -16,7 +16,7 @@ function Register() {
     try {
       setError(false);
       const res = await axios.post(
-        "https://gopi-blog-api.herokuapp.com/api/auth/register",
+        "https://gopi-mern-blog-api.herokuapp.com/api/auth/register",
         {
           username,
           email,
@@ -72,11 +72,7 @@ function Register() {
           </span>
         )}
       </form>
-      <button className="LoginButton">
-        <Link className="link" to="/login">
-          Login
-        </Link>
-      </button>
+      
     </div>
   );
 }

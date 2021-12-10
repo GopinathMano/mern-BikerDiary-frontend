@@ -6,7 +6,7 @@ function Header() {
   return (
     <div className="header">
       <div className="header_titles">
-        <span className="header_title2">BLOG APPLICATION</span>
+        <span className="header_title2">Motorcycle Diaries</span>
       </div>
       <img src={bg} alt="backgroud" />
     </div>

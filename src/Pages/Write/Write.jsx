@@ -1,4 +1,5 @@
-import { Add } from "@material-ui/icons";
+import { AddAPhoto} from "@material-ui/icons";
+
 import React, { useContext, useState } from "react";
 import "./Write.css";
 // import postImg from "../../image/bg.jpg";
@@ -24,23 +25,11 @@ function Write() {
       title,
       desc,
     };
-    //   export const upload=(token,file)=>{
-    //     const formData=new FormData();
-    //     formData.append('somefile',file);
-    //    return axios.post(`${BASE_URL}/upload`,formData,
-    //     {
-    //         headers:{
-    //             authorization:token
-    //         }
-    //     }
-    //     ).then((res)=>res.data).catch((error)=>(error.response.data));
-    // }
+ 
     if (file) {
       console.log(file);
       const data = new FormData();
-      // const filename = Date.now() + file.name;
-      // console.log(filename);
-      // data.append("name", filename);
+     
       data.append("file", file);
       newPost.photo = file.name;
 
@@ -57,11 +46,11 @@ function Write() {
     try {
       setLoading(true);
       const res = await axios.post(
-        "https://gopi-blog-api.herokuapp.com/api/posts",
+        "https://gopi-mern-blog-api.herokuapp.com/api/posts",
         newPost
       );
       console.log(res.data);
-      // console.log(res.data);
+   
       setLoading(false);
       window.location.replace(`post/${res.data.post._id}`);
     } catch (error) {
@@ -78,7 +67,7 @@ function Write() {
       <form className="writeForm" onSubmit={handleSubmit}>
         <div className="writeFormGroup">
           <label htmlFor="fileInput">
-            <Add />
+            <AddAPhoto />
           </label>
           <input
             type="file"
@@ -88,7 +77,7 @@ function Write() {
           />
           <input
             type="text"
-            placeholder="Title"
+            placeholder="Bike Name"
             className="writeInput"
             onChange={(e) => setTitle(e.target.value)}
             autoFocus
@@ -97,7 +86,7 @@ function Write() {
         <div className="writeFormGroup">
           <textarea
             className="writeInput writeText"
-            placeholder="Tell your story..."
+            placeholder="write your bike rides & journies."
             type="text"
             onChange={(e) => setDesc(e.target.value)}
           ></textarea>
@@ -108,7 +97,7 @@ function Write() {
           </div>
         ) : (
           <button className="writeSubmit" type="submit">
-            Publish
+          Post
           </button>
         )}
       </form>

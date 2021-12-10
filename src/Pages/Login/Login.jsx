@@ -1,24 +1,20 @@
 import axios from "axios";
 import React, { useContext, useRef } from "react";
-import { Link } from "react-router-dom";
 import { Context } from "../../Context/Context";
 import "./Login.css";
 
 function Login() {
-  // const [username, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
   let userRef = useRef();
   let passwordRef = useRef();
 
   const { dispatch, isFetching } = useContext(Context);
-  // console.log("data", isFetching);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     dispatch({ type: "LOGIN_START" });
     try {
       const res = await axios.post(
-        "https://gopi-blog-api.herokuapp.com/api/auth/login",
+        "https://gopi-mern-blog-api.herokuapp.com/api/auth/login",
         {
           username: userRef.current.value,
           password: passwordRef.current.value,
@@ -56,33 +52,6 @@ function Login() {
           Login
         </button>
       </form>
-      <button className="RegisterButton">
-        <Link className="link" to="/register">
-          Register
-        </Link>
-      </button>
-      <div style={{ textAlign: "center", marginTop: "10px" }}>
-        <h3
-          style={{ color: "#e72b70", fontWeight: "bold", fontSize: "1.5rem" }}
-        >
-          Use This Credentials for test Purpose
-        </h3>
-        <div
-          style={{
-            color: "#332a2a",
-            fontWeight: "bold",
-            borderTop: "1px solid white",
-          }}
-        >
-          <p>
-            <b>Email</b> : test123
-          </p>
-          <p>
-            {" "}
-            <b>Password</b> : test123
-          </p>
-        </div>
-      </div>
     </div>
   );
 }

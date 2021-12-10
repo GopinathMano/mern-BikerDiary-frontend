@@ -2,14 +2,14 @@ import React, { useContext } from "react";
 import "./TopNavbar.css";
 import { Link } from "react-router-dom";
 import Profile from "../../image/profilePic.png";
-// import { Facebook, GitHub, Mail, WhatsApp } from "@material-ui/icons";
+import icon from "../../image/motorbike.png";
 import { Context } from "../../Context/Context";
 
 function TopNavbar() {
   const { user, dispatch } = useContext(Context);
   console.log(user);
 
-  const profPic = "https://gopi-blog-api.herokuapp.com/images/";
+  const profPic = "https://gopi-mern-blog-api.herokuapp.com/images/";
 
   //logout
   const handleLogout = () => {
@@ -19,13 +19,9 @@ function TopNavbar() {
   return (
     <div className="Topbar">
       <div className="topleft">
-        <h3>Blog App</h3>
-        {/* <Facebook className="facebook" />
-
-        <WhatsApp className="whatsapp" />
-        <GitHub />
-        <Mail className="mail" /> */}
-      </div>
+      <img className="icon"  src= {icon} alt="icon" />
+        <h3>MOTORCYCLE - DIARIES </h3>
+       </div>
       <div className="topcenter">
         <ul className="topList">
           <li className="topListItem">
@@ -41,7 +37,7 @@ function TopNavbar() {
           </li>
           <li className="topListItem">
             <Link to="/write" className="link">
-              WRITE
+              Write your rides
             </Link>
           </li>
           <li className="topListItem" onClick={handleLogout}>

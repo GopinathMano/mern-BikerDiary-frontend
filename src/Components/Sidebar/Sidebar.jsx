@@ -10,7 +10,7 @@ function Sidebar() {
   //get Category
   const getCategory = async () => {
     const res = await axios.get(
-      "https://gopi-blog-api.herokuapp.com/api/categories"
+      "https://gopi-mern-blog-api.herokuapp.com/api/categories"
     );
     // console.log(res.data.details);
     setCates(res.data.postCategory);
